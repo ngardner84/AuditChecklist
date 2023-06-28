@@ -1,0 +1,27 @@
+<div class="row pt-5 mx-auto">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0 mx-auto">
+      <div class="card-header">
+        <h3 class="mb-0">Login</h3>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="col-md-6 mx-auto">
+          <mat-form-field class="form-group">
+            <mat-label for="username">Email</mat-label>
+            <input type="text" class="form-control" formControlName="email" id="email" matInput placeholder="Enter email" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mx-auto">
+          <mat-form-field class="form-group">
+            <mat-label for="password">Password</mat-label>
+            <input type="password" class="form-control" formControlName="password" id="password" matInput placeholder="Password" required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 mx-auto">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
