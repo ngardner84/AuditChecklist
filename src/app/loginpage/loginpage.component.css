@@ -3,3 +3,24 @@
     align-items: center;
     justify-content: space-evenly;
   }
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.login-form{
+  padding-top: 20px;
+}
+
+.login-form .btn{
+  width: 80%;
+  display: flex;
+  align-content: center;
+}
+
+.spacer{
+  padding-top: 20px;
+}

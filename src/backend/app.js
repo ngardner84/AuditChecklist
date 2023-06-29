@@ -13,6 +13,7 @@ app.use(cors({
 
 const tokenKey = "this-is-a-key-for-jwt-token"
 
+//TODO - move to DB
 const users = [
     {
         id: 1,
