@@ -1,9 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/models/user';
+import { StorageService } from './storage.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +18,7 @@ export class AuthService {
   public user: Observable<User | null>;
   public loggedIn: boolean = false;
 
-
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private storageService: StorageService) { 
     const user = localStorage.getItem('user');
     this.loggedIn = this.isLoggedIn;
     
@@ -43,12 +46,11 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any>{
-    return this.http.post<any>(`${this.backendURL}/login`, {email, password});
+    return this.http.post<any>(`${this.backendURL}/login`, {email, password}, httpOptions);
   }
 
   logout(): void{
-    localStorage.removeItem('user');
-    this.userSubject.next(null);
+    this.storageService.clean();
     this.router.navigate(['/login']);
   }
   
